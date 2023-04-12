@@ -6,7 +6,7 @@ const { protect, dev_man_adm } = require("../middleware/auth");
 
 router.post("/register", protect, dev_man_adm, karyawanController.register);
 router.post("/login", karyawanController.login);
-router.get("/", protect, karyawanController.get);
+router.get("/", karyawanController.get);
 router.get("/:id", karyawanController.getById);
 router.put("/update/:id", karyawanController.update);
 router.put(
