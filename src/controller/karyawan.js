@@ -10,7 +10,7 @@ const {
   updatePasswordKaryawan,
   deleteKaryawan,
 } = require("../model/karyawan");
-const bcrypt = require("bcryptjs");
+const argon2 = require("argon2");
 const { generateToken, generateRefreshToken } = require("../helper/jwt");
 const cloudinary = require("../config/cloud");
 
@@ -34,8 +34,9 @@ const karyawanController = {
       for (let i = 0; i < 6; i++) {
         id += digits[Math.floor(Math.random() * 10)];
       }
-      let password = bcrypt.hashSync(req.body.password);
-      console.log(password);
+      const hash = await argon2.hash(req.body.password);
+      console.log(`${hash}`);
+      const password = `${hash}`;
       let is_dev = parseInt(req.body.is_dev);
       let is_manager = parseInt(req.body.is_manager);
       let is_admin = parseInt(req.body.is_admin);
@@ -102,9 +103,9 @@ const karyawanController = {
         response(res, 400, false, null, "Account not found");
       } else {
         let password = req.body.password;
-        let validation = bcrypt.compareSync(
-          password,
-          karyawanUsername.password
+        let validation = await argon2.verify(
+          karyawanUsername.password,
+          password
         );
         console.log(validation);
         console.log(password);
@@ -135,7 +136,7 @@ const karyawanController = {
       }
     } else {
       let password = req.body.password;
-      let validation = bcrypt.compareSync(password, karyawanEmail.password);
+      let validation = await argon2.verify(karyawanEmail.password, password);
       console.log(validation);
       console.log(password);
       console.log(karyawanEmail.password);
