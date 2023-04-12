@@ -64,6 +64,11 @@ const karyawanController = {
         tempat_lahir: req.body.tempat_lahir,
         tanggal_lahir: req.body.tanggal_lahir,
         alamat: req.body.alamat,
+        provinsi: req.body.provinsi,
+        kota: req.body.kota,
+        kecamatan: req.body.kecamatan,
+        kelurahan: req.body.kelurahan,
+        kode_pos: req.body.kode_pos,
         status_menikah: req.body.status_menikah,
       };
       try {
@@ -231,6 +236,11 @@ const karyawanController = {
         tempat_lahir: req.body.tempat_lahir,
         tanggal_lahir: req.body.tanggal_lahir,
         alamat: req.body.alamat,
+        provinsi: req.body.provinsi,
+        kota: req.body.kota,
+        kecamatan: req.body.kecamatan,
+        kelurahan: req.body.kelurahan,
+        kode_pos: req.body.kode_pos,
         status_menikah: req.body.status_menikah,
       };
       await updateKaryawan(data);
