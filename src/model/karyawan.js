@@ -47,6 +47,7 @@ const createKaryawan = (data) => {
     jenis_kelamin,
     nomor_kitas,
     tipe_izin,
+    nomor_izin,
     kadaluarsa_izin,
     nomor_hp,
     tempat_lahir,
@@ -61,7 +62,7 @@ const createKaryawan = (data) => {
   } = data;
   return new Promise((resolve, reject) => {
     pool.query(
-      `INSERT INTO tbl_karyawan (id, nama, username, email, password, is_dev, is_manager, is_admin, is_resepsionis, is_perawat, is_dokter, is_manajemen, jenis_kelamin, nomor_kitas, tipe_izin, kadaluarsa_izin, nomor_hp, tempat_lahir, tanggal_lahir, alamat, provinsi, kota, kecamatan, kelurahan, kode_pos, status_menikah, created_at, updated_at) VALUES ('${id}', '${nama}', '${username}', '${email}', '${password}', '${is_dev}', '${is_manager}', '${is_admin}', '${is_resepsionis}', '${is_perawat}', '${is_dokter}', '${is_manajemen}', '${jenis_kelamin}', '${nomor_kitas}', '${tipe_izin}', '${kadaluarsa_izin}', '${nomor_hp}', '${tempat_lahir}', '${tanggal_lahir}', '${alamat}', '${provinsi}', '${kota}', '${kecamatan}', '${kelurahan}', '${kode_pos}', '${status_menikah}', NOW(), NOW())`,
+      `INSERT INTO tbl_karyawan (id, nama, username, email, password, is_dev, is_manager, is_admin, is_resepsionis, is_perawat, is_dokter, is_manajemen, jenis_kelamin, nomor_kitas, tipe_izin, nomor_izin, kadaluarsa_izin, nomor_hp, tempat_lahir, tanggal_lahir, alamat, provinsi, kota, kecamatan, kelurahan, kode_pos, status_menikah, created_at, updated_at) VALUES ('${id}', '${nama}', '${username}', '${email}', '${password}', '${is_dev}', '${is_manager}', '${is_admin}', '${is_resepsionis}', '${is_perawat}', '${is_dokter}', '${is_manajemen}', '${jenis_kelamin}', '${nomor_kitas}', '${tipe_izin}', '${nomor_izin}', '${kadaluarsa_izin}', '${nomor_hp}', '${tempat_lahir}', '${tanggal_lahir}', '${alamat}', '${provinsi}', '${kota}', '${kecamatan}', '${kelurahan}', '${kode_pos}', '${status_menikah}', NOW(), NOW())`,
       (err, res) => {
         if (!err) {
           resolve(res);
@@ -116,6 +117,7 @@ const updateKaryawan = (data) => {
     jenis_kelamin,
     nomor_kitas,
     tipe_izin,
+    nomor_izin,
     kadaluarsa_izin,
     nomor_hp,
     tempat_lahir,
@@ -131,7 +133,7 @@ const updateKaryawan = (data) => {
   console.log(data);
   return new Promise((resolve, reject) => {
     pool.query(
-      `UPDATE tbl_karyawan SET nama = '${nama}', username = '${username}', email = '${email}', is_dev = '${is_dev}', is_manager = '${is_manager}', is_admin = '${is_admin}', is_resepsionis = '${is_resepsionis}', is_perawat = '${is_perawat}', is_dokter = '${is_dokter}', is_manajemen = '${is_manajemen}', jenis_kelamin = '${jenis_kelamin}', nomor_kitas = '${nomor_kitas}', tipe_izin = '${tipe_izin}', kadaluarsa_izin = '${kadaluarsa_izin}', nomor_hp = '${nomor_hp}', tempat_lahir = '${tempat_lahir}', tanggal_lahir = '${tanggal_lahir}', alamat = '${alamat}', provinsi = '${provinsi}', kota = '${kota}', kecamatan = '${kecamatan}', kelurahan = '${kelurahan}', kode_pos = '${kode_pos}', status_menikah = '${status_menikah}' WHERE id = '${id}'`,
+      `UPDATE tbl_karyawan SET nama = '${nama}', username = '${username}', email = '${email}', is_dev = '${is_dev}', is_manager = '${is_manager}', is_admin = '${is_admin}', is_resepsionis = '${is_resepsionis}', is_perawat = '${is_perawat}', is_dokter = '${is_dokter}', is_manajemen = '${is_manajemen}', jenis_kelamin = '${jenis_kelamin}', nomor_kitas = '${nomor_kitas}', tipe_izin = '${tipe_izin}', nomor_izin = '${nomor_izin}', kadaluarsa_izin = '${kadaluarsa_izin}', nomor_hp = '${nomor_hp}', tempat_lahir = '${tempat_lahir}', tanggal_lahir = '${tanggal_lahir}', alamat = '${alamat}', provinsi = '${provinsi}', kota = '${kota}', kecamatan = '${kecamatan}', kelurahan = '${kelurahan}', kode_pos = '${kode_pos}', status_menikah = '${status_menikah}' WHERE id = '${id}'`,
       (err, res) => {
         if (!err) {
           resolve(res);
