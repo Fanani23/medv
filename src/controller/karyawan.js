@@ -273,7 +273,10 @@ const karyawanController = {
   updatePassword: async (req, res, next) => {
     try {
       const id = req.body.id;
-      let password = bcrypt.hashSync(req.body.password);
+      // let password = argon2.hashSync(req.body.password);
+      const hash = await argon2.hash(req.body.password);
+      console.log(`${hash}`);
+      const password = `${hash}`;
       const data = {
         id,
         password,
