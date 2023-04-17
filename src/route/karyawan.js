@@ -8,13 +8,9 @@ router.post("/register", karyawanController.register);
 router.post("/login", karyawanController.login);
 router.get("/", karyawanController.get);
 router.get("/:id", karyawanController.getById);
-router.put("/update/:id", karyawanController.update);
-router.put(
-  "/update/photo/:id",
-  upload.single("foto"),
-  karyawanController.updatePhoto
-);
-router.put("/update/password/:id", karyawanController.updatePassword);
-router.delete("/delete/:id", karyawanController.delete);
+router.put("/:id", karyawanController.update);
+router.put("/photo/:id", upload.single("foto"), karyawanController.updatePhoto);
+router.put("/password/:id", karyawanController.updatePassword);
+router.delete("/:id", karyawanController.delete);
 
 module.exports = router;
