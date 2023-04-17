@@ -30,6 +30,10 @@ const findUsername = (username) => {
   });
 };
 
+const countKaryawan = () => {
+  pool.query(`SELECT COUNT(*) AS total FROM tbl_karyawan`);
+};
+
 const createKaryawan = (data) => {
   const {
     id,
@@ -192,6 +196,7 @@ const deleteKaryawan = (id) => {
 module.exports = {
   findEmail,
   findUsername,
+  countKaryawan,
   createKaryawan,
   getKaryawan,
   getKaryawanById,

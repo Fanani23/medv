@@ -2,6 +2,7 @@ const { response } = require("../helper/common");
 const {
   findEmail,
   findUsername,
+  countKaryawan,
   createKaryawan,
   getKaryawan,
   getKaryawanById,
@@ -181,11 +182,22 @@ const karyawanController = {
         limit,
         offset,
       });
+      const {
+        rows: [count],
+      } = await countKaryawan();
+      const totalData = parseInt(count.total);
+      const totalPage = Math.ceil(totalData / limit);
+      const pagination = {
+        currentPage: page,
+        limit,
+        totalData,
+        totalPage,
+      };
       response(
         res,
         200,
         true,
-        { result: result.rows },
+        { result: result.rows, pagination: pagination },
         "Get karyawan data success"
       );
     } catch (err) {
