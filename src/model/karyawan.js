@@ -31,7 +31,7 @@ const findUsername = (username) => {
 };
 
 const countKaryawan = () => {
-  pool.query(`SELECT COUNT(*) AS total FROM tbl_karyawan`);
+  return pool.query(`SELECT COUNT(*) AS total FROM tbl_karyawan`);
 };
 
 const createKaryawan = (data) => {
