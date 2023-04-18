@@ -16,6 +16,7 @@ const {
 } = require("../model/karyawan");
 const argon2 = require("argon2");
 const { generateToken, generateRefreshToken } = require("../helper/jwt");
+// const client = require("../config/redis");
 const cloudinary = require("../config/cloud");
 
 const karyawanController = {
